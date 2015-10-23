@@ -1,0 +1,1 @@
+Preserve your most precious memories with Moment! This micro-diary platform will allow users to document their moments in specific journals - because the days are long, but the years are short. 
