@@ -1,0 +1,9 @@
+<div class="container">
+	<h1>Journals#index</h1>
+
+	<% @journals.each do |journal| %>
+		<%= link_to journal.title, journal_path(journal.id) %>
+	<% end %>	
+</div>
+
+
