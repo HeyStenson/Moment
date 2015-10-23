@@ -2,13 +2,14 @@ class MomentsController < ApplicationController
   def index
   end
 
-  def show
-  end
-
   def new
   end
 
   def create
+  end
+
+  def show
+    @moment = Moment.find(params[:id])
   end
 
   def edit

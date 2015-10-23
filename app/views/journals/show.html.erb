@@ -4,8 +4,8 @@
 	<%= @journal.description %>
 	<div>	
 		<% @moments.each do |moment| %>
-			<h3>Moment Title: <%= moment.title %></h3>
-			Moment Body: 
+			<h3>Moment Title: <%= link_to moment.title, journal_moment_path(@journal.id, moment.id) %></h3>
+			<p>Moment Body: <%= moment.description %></p> 
 		<% end %>
 	</div>
 </div>

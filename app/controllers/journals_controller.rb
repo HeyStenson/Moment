@@ -12,6 +12,7 @@ class JournalsController < ApplicationController
 
   def show
     @journal = Journal.find(params[:id])
+    @moment = Moment.find(params[:id])
     @moments = Moment.order(created_at: :desc).where(["journal_id = #{@journal.id}"])
   end
 
