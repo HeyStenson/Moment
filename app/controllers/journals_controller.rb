@@ -21,9 +21,18 @@ class JournalsController < ApplicationController
   end
 
   def edit
+    @journal = Journal.find_by_id(params[:id])
+    @user = User.where("current_user.id = @journal.user_id")
   end
 
   def update
+    @journal = Journal.find_by_id(params[:id])
+    @journal.update(journal_params)
+    # @user = User.find_by_id(params[:user_id])
+    # @user = User.where("current_user.id = @journal.user_id").first
+    # @user = current_user
+    @user = User.find(params[:id])
+    redirect_to("/users/#{@user.id}/journals/#{@journal.id}")
   end
 
   def destroy

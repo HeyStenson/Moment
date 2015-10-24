@@ -3,7 +3,9 @@
 
 	<h3><%= @journal.title %></h3>
 	<p><%= @journal.description %></p>
-
+	<div>
+		<%= link_to "Edit", edit_user_journal_path(@user.id, @journal.id) %> your journal's title or tagline.
+	</div>
 	<div>
 		<%= link_to "Start adding moments!", new_user_journal_moment_path(@user.id, @journal.id) %>
 	</div>
