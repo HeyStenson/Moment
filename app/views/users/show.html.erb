@@ -4,14 +4,11 @@
 	<p>First Name: <%= @user.first_name %></p>
 	<p>Last Name: <%= @user.last_name %></p>
 	<div>
-		<%= link_to "Add a new journal!", new_user_journal_path(@user.id) %>
+		<h2>placeholder: add a new journal</h2>
 	</div>
 
 	<div> Your Journals: <br>
-		<% @journals.each do |journal| %>
-			<%= link_to journal.title, user_journal_path(@user.id, journal.id) %>
-			<br>
-		<% end %>
+		<h2>placeholder</h2>
 
 	</div>
 

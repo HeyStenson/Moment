@@ -1,18 +1,22 @@
 Rails.application.routes.draw do
-  get 'users/show'
+  # get 'users/show'
 
-  # get 'users/edit'
+  # # get 'users/edit'
 
-  get 'users/update'
+  # get 'users/update'
 
   root to: 'welcome#index'
   
   devise_for :users, :controllers => { registrations: 'registrations' }
 
-  resources :users do
-    resources :journals do
-      resources :moments
-    end  
-  end  
+resources :users, only: [:destroy, :show]
+
+resources :journals
+
+  # resources :users do
+  #   resources :journals do
+  #     resources :moments
+  #   end  
+  # end  
 
 end
