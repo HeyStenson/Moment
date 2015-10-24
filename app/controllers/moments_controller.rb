@@ -9,9 +9,9 @@ class MomentsController < ApplicationController
   end
 
   def create
+    @journal = Journal.find_by(params[:id])
     @moment = Moment.new(moment_params)
     @user = User.find_by(params[:id])
-    @journal = Journal.find_by(params[:id])
     @moment.save
     redirect_to("/users/#{@user.id}/journals/#{@journal.id}")
   end
