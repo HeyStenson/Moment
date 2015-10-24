@@ -1,11 +1,20 @@
 <div class="container">
 	<h1>Journals#show</h1>
-	<%= @journal.title %>
-	<%= @journal.description %>
+
+	<h3><%= @journal.title %></h3>
+	<p><%= @journal.description %></p>
+
+	<div>
+		<%= link_to "Start adding moments!", new_user_journal_moment_path(@user.id, @journal.id) %>
+	</div>
+	<div>
+		Test! <%= @moments %>
+	</div>
 	<div>	
 		<% @moments.each do |moment| %>
-			<h3>Moment Title: <%= link_to moment.title, journal_moment_path(@journal.id, moment.id) %></h3>
+			<h3>Moment Title: <%= link_to moment.title, user_journal_moment_path(@user.id, @journal.id, moment.id) %></h3>
 			<p>Moment Body: <%= moment.description %></p> 
 		<% end %>
 	</div>
+
 </div>

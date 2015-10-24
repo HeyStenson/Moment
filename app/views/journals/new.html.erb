@@ -1,2 +1,14 @@
-<h1>Journals#new</h1>
-<p>Find me in app/views/journals/new.html.erb</p>
+<div class="container">
+	<h1>Add a New Journal</h1>
+	<%= form_for @journal, url: "/users/#{params[:user_id]}/journals" do |f| %>
+		<div class="form-group">
+			<%= f.text_field :title, placeholder: "Journal Name", class: "form-control" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.text_field :description, placeholder: "What are you journaling?", class: "form-control" %>
+		</div>
+		<%= f.hidden_field :user_id, value: @user.id %>
+		<%= f.submit "Create", class: "btn" %>
+	<% end %>
+</div>
