@@ -1,10 +1,10 @@
 <div class="container">
 	<h1>Edit This Journal</h1>
 	<%= form_for @journal, url: user_journal_path, method: :put do |f| %>
-		<div class="input-group">
+		<div class="form-group">
 			<%= f.text_field :title, placeholder: "Title", class: "form-control" %>
 		</div>
-		<div class="input-group">
+		<div class="form-group">
 			<%= f.text_area :description, placeholder: "Description", class: "form-control" %>
 		</div>
 		<%= f.submit "Edit Journal", class: "btn btn-primary" %>

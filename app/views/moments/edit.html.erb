@@ -3,13 +3,13 @@
 	
 	<%= form_for @moment, url: user_journal_moment_path, method: :put do |f| %>
 		<div class="form-group">
-			<%= f.text_field :title, placeholder: "Moment Title", class: "form-control" %>
+			<%= f.text_field :title, class: "form-control" %>
 		</div>
 
 		<div class="form-group">
-			<%= f.text_field :description, placeholder: "Start a memory", class: "form-control" %>
+			<%= f.text_field :description, class: "form-control" %>
 		</div>
 		<%= f.submit "Edit Moment", class: "btn btn-primary" %>
 	<% end %>
-
+	
 </div>

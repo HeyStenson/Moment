@@ -29,6 +29,9 @@ gem 'devise'
 # bootstrap for prettiness
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.5.1'
 
+# ffaker for seeding data
+gem 'ffaker', '~> 2.1.0'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
