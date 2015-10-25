@@ -3,6 +3,6 @@
 	<h3><%= @journal.title %></h3>
 	<small>Created <%= time_ago_in_words(relative_time(@journal)) %> ago</small>
 	<h5><%= @journal.description %></h5>
-	<%= button_to "Edit this journal", edit_journal_path, method: :get, class: "btn btn-primary" %>
-	<%= button_to "Delete this journal", journal_path, method: :delete, class: "btn btn-danger" %>
+	<%= button_to "Edit this journal", edit_user_journal_path, method: :get, class: "btn btn-primary" %>
+	<%= button_to "Delete this journal", user_journal_path, method: :delete, class: "btn btn-danger" %>
 </div>

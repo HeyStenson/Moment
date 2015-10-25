@@ -1,18 +1,17 @@
 <div class="container">
-	<h1>Your Journals</h1>
-	<h1>users#show</h1>
-	<p>First Name: <%= @user.first_name %></p>
-	<p>Last Name: <%= @user.last_name %></p>
-	<div>
-		<h2>placeholder: add a new journal</h2>
-	</div>
-
-	<div> Your Journals: <br>
-		<h2>placeholder</h2>
-
-	</div>
-
+	<h1>Hello, <%= @user.first_name %>!</h1>
+	
 	<%= link_to("Update Your Profile", edit_user_registration_path) %>
 
-	<%= link_to('Log Out', destroy_user_session_path, :method => :delete) %>
+	<div>
+		<%= link_to("Add a new journal", new_user_journal_path(@user.id), method: :get) %>
+	</div>
+
+	<div><h2>Your Journals:</h2>  
+		<% @user.journals.each do |journal| %>
+			<h4><%= link_to journal.title, user_journal_path(@user.id, journal.id) %> - <small><%= journal.description %></small></h4>
+		<% end %>
+
+	</div>
+
 </div>

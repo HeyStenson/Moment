@@ -1,20 +1,26 @@
 class JournalsController < ApplicationController
   def index
+    @user = User.find_by_id(params[:user_id])
     @journals = Journal.all
   end
 
   def new
     @journal = Journal.new
+    @user = User.find_by_id(params[:user_id])
   end
 
   def create
     @journal = Journal.new(journal_params)
     @journal.save
-    redirect_to journals_path
+    @user = User.find_by_id(params[:user_id])
+    redirect_to user_path(@user.id)
   end
 
   def show
+    # this journal
     @journal = Journal.find_by_id(params[:id])
+    # user for the above post
+    @user = User.find_by_id(@journal.user_id)
   end
 
   def edit
@@ -24,18 +30,20 @@ class JournalsController < ApplicationController
   def update
     @journal = Journal.find_by_id(params[:id])
     @journal.update(journal_params)
-    redirect_to journal_path(@journal.id)
-  end
+    @user = current_user
+    redirect_to user_journal_path(@user.id, @journal.id)
+  end 
 
   def destroy
     journal = Journal.find_by_id(params[:id])
+    @user = current_user
     journal.destroy
-    redirect_to root_path
+    redirect_to user_path(@user.id)
   end
 
   private
 
   def journal_params
-    params.require(:journal).permit(:title, :description)
+    params.require(:journal).permit(:title, :description, :user_id)
   end
 end

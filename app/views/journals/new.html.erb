@@ -1,13 +1,14 @@
 <div class="container">
 	<h1>journals#new</h1>
 	
-	<%= form_for @journal do |f| %>
+	<%= form_for [@user, @journal] do |f| %>
 		<div class="form-group">
 			<%= f.text_field :title, placeholder: "Journal Title", class: "form-control" %>
 		</div>
 		<div class="form-group">
-			<%= f.text_area :title, placeholder: "Journal Title", class: "form-control" %>
+			<%= f.text_area :description, placeholder: "Journal Tagline", class: "form-control" %>
 		</div>
+		<%= f.hidden_field :user_id, value: @user.id %>
 		<%= f.submit "Create New Journal", class: "btn btn-primary" %>
 	<% end %>
 

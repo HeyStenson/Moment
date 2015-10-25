@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show
-  	@user = current_user
-  	@journals = Journal.order(created_at: :desc).where(["user_id = #{@user.id}"])
+  	@user = User.find_by_id(params[:id])
+  	@journals = @user.journals.first
   end
 
   def edit

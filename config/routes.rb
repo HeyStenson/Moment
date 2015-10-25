@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   
   devise_for :users, :controllers => { registrations: 'registrations' }
 
-resources :users, only: [:destroy, :show]
-
-resources :journals
+resources :users, only: [:destroy, :show] do
+  resources :journals
+end  
 
   # resources :users do
   #   resources :journals do

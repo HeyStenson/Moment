@@ -1,7 +1,7 @@
 <div class="container">
 	<h1>journals#index</h1>
 	<% @journals.each do |journal| %>
-		<h4><%= link_to journal.title, journal_path(journal.id) %></h4>
+		<h4><%= link_to journal.title, user_journal_path(@user.id, journal.id) %></h4>
 		<small>Created <%= time_ago_in_words(relative_time(journal)) %> ago</small>
 	<% end %>
 </div>
