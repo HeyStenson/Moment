@@ -1,26 +1,51 @@
 class JournalsController < ApplicationController
   def index
+    @user = User.find_by_id(params[:user_id])
     @journals = Journal.all
   end
 
   def new
     @journal = Journal.new
+    @user = User.find_by_id(params[:user_id])
   end
 
   def create
+    @journal = Journal.new(journal_params)
+    @journal.save
+    @user = User.find_by_id(params[:user_id])
+    redirect_to user_path(@user.id)
   end
 
   def show
-    @journal = Journal.find(params[:id])
-    @moments = Moment.order(created_at: :desc).where(["journal_id = #{@journal.id}"])
+    # this journal
+    @journal = Journal.find_by_id(params[:id])
+    # user for the journal
+    @user = User.find_by_id(@journal.user_id)
+    # moments for this journal
+    @moments = @journal.moments.first
   end
 
   def edit
+    @journal = Journal.find_by_id(params[:id])
   end
 
   def update
-  end
+    @journal = Journal.find_by_id(params[:id])
+    @journal.update(journal_params)
+    @user = current_user
+    redirect_to user_journal_path(@user.id, @journal.id)
+  end 
 
   def destroy
+    journal = Journal.find_by_id(params[:id])
+    @user = current_user
+    journal.destroy
+    redirect_to user_path(@user.id)
+  end
+
+  private
+
+  def journal_params
+    params.require(:journal).permit(:title, :description, :user_id)
   end
 end

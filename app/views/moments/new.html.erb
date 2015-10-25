@@ -1,2 +1,17 @@
-<h1>Moments#new</h1>
-<p>Find me in app/views/moments/new.html.erb</p>
+<div class="container">
+	<h1>Moments#new</h1>
+	
+	<%= form_for [@user, @journal, @moment] do |f| %>
+		<div class="form-group">
+			<%= f.text_field :title, placeholder: "Moment Title", class: "form-control" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.text_field :description, placeholder: "Start a memory", class: "form-control" %>
+		</div>
+		<%= f.hidden_field :user_id, value: @user.id %>
+		<%= f.hidden_field :journal_id, value: @journal.id %>
+		<%= f.submit "Create New Moment", class: "btn btn-primary" %>
+	<% end %>
+
+</div>

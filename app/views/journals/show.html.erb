@@ -1,11 +1,20 @@
 <div class="container">
-	<h1>Journals#show</h1>
-	<%= @journal.title %>
-	<%= @journal.description %>
-	<div>	
-		<% @moments.each do |moment| %>
-			<h3>Moment Title: <%= moment.title %></h3>
-			Moment Body: 
+	<h1><%= @journal.title %> - <small><%= @journal.description %></small></h1>
+	<small>Created <%= time_ago_in_words(relative_time(@journal)) %> ago</small>
+	
+	<%= button_to "Edit this journal", edit_user_journal_path, method: :get, class: "btn btn-primary" %>
+	<br>
+	<%= button_to "Delete this journal", user_journal_path, method: :delete, class: "btn btn-danger" %>
+	<div>
+		<%= link_to "Add a New Moment", new_user_journal_moment_path(@user.id, @journal.id), method: :get %>
+	</div>
+	
+	<div>
+		<h2>Your Moments for <%= @journal.title %></h2>
+		<% @journal.moments.reverse_each do |moment| %>
+			<h4><%= link_to moment.title, user_journal_moment_path(@user.id, @journal.id, moment.id) %></h4>
+			<p><%= moment.description %></p>
 		<% end %>
 	</div>
+
 </div>
