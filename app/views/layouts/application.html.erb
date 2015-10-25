@@ -2,9 +2,15 @@
 <html>
 <head>
   <title>Moment</title>
+  <script>
+       UPLOADCARE_LOCALE = "en";
+       UPLOADCARE_TABS = "file url facebook gdrive dropbox instagram evernote flickr skydrive";
+       UPLOADCARE_PUBLIC_KEY = "4af499d15b06952922d0";
+  </script>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <script charset="utf-8" src="//ucarecdn.com/widget/2.5.5/uploadcare/uploadcare.full.min.js"></script>
 </head>
 <body>
 

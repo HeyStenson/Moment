@@ -1,6 +1,7 @@
 <div class="container">
 	<h1>Hello, <%= @user.first_name %>!</h1>
-	
+	<%= image_tag(@user.photo, height: '100', width: '100') %>
+	<br>
 	<%= link_to("Update Your Profile", edit_user_registration_path) %>
 
 	<div>

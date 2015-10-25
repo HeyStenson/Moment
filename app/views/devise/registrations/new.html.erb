@@ -27,6 +27,13 @@
       <%= f.password_field :password_confirmation, placeholder: "Confirm Password", autocomplete: "off", class: "form-control" %>
     </div>
 
+    <div>
+        <input type="hidden" role="uploadcare-uploader" name="user[photo]"
+            data-crop="disabled"
+            data-preview-step="true"
+            data-images-only="true" />
+    </div>
+    <br>
     <div class="actions">
       <%= f.submit "Sign up", class: "btn btn-primary" %>
     </div>
