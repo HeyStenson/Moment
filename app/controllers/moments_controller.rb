@@ -3,30 +3,43 @@ class MomentsController < ApplicationController
   end
 
   def new
-    @user = current_user
-    @journal = Journal.find_by(params[:id])
     @moment = Moment.new
+    @user = User.find_by_id(params[:user_id])
+    @journal = Journal.find_by_id(params[:journal_id])
   end
 
   def create
-    @journal = Journal.find_by(params[:id])
     @moment = Moment.new(moment_params)
-    @user = User.find_by(params[:id])
     @moment.save
-    redirect_to("/users/#{@user.id}/journals/#{@journal.id}")
+    @user = User.find(params[:user_id])
+    @journal = Journal.find(params[:journal_id])
+    redirect_to user_journal_path(@user.id, @journal.id)
   end
 
   def show
-    @moment = Moment.find(params[:id])
+    @moment = Moment.find_by_id(params[:id])
+    @journal = Journal.find_by_id(@moment.journal_id)
+    @user = User.find_by_id(@moment.user_id)
   end
 
   def edit
+    @moment = Moment.find_by_id(params[:id])
   end
 
   def update
+    @moment = Moment.find_by_id(params[:id])
+    @moment.update(moment_params)
+    @user = User.find_by_id(@moment.user_id)
+    @journal = Journal.find_by_id(@moment.journal_id)
+    redirect_to user_journal_moment_path(@user.id, @journal.id, @moment.id)
   end
 
   def destroy
+    moment = Moment.find_by_id(params[:id])
+    @user = User.find_by_id(moment.user_id)
+    @journal = Journal.find_by_id(moment.journal_id)
+    moment.destroy
+    redirect_to user_journal_path(@user.id, @journal.id)
   end
 
   private

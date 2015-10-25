@@ -5,6 +5,16 @@
 	<%= button_to "Edit this journal", edit_user_journal_path, method: :get, class: "btn btn-primary" %>
 	<br>
 	<%= button_to "Delete this journal", user_journal_path, method: :delete, class: "btn btn-danger" %>
-	<div>Placeholder: All This Journal's Moments</div>
+	<div>
+		<%= link_to "Add a New Moment", new_user_journal_moment_path(@user.id, @journal.id), method: :get %>
+	</div>
+	
+	<div>
+		<h2>Your Moments for <%= @journal.title %></h2>
+		<% @journal.moments.reverse_each do |moment| %>
+			<h4><%= link_to moment.title, user_journal_moment_path(@user.id, @journal.id, moment.id) %></h4>
+			<p><%= moment.description %></p>
+		<% end %>
+	</div>
 
 </div>

@@ -1,5 +1,6 @@
 <div class="container">
-	<h1>Moments#show</h1>
-	<p><%= @moment.title %></p>
+	<h1><%= @moment.title %></h1>
 	<p><%= @moment.description %></p>
+	<%= button_to "Edit Moment", edit_user_journal_moment_path, method: :get, class: "btn btn-primary" %>
+	<%= button_to "Delete Moment", user_journal_moment_path, method: :delete, class: "btn btn-danger" %>
 </div>
