@@ -1,4 +1,7 @@
 class MomentsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :correct_user
+
   def index
   end
 
@@ -46,5 +49,10 @@ class MomentsController < ApplicationController
 
   def moment_params
     params.require(:moment).permit(:title, :description, :user_id, :journal_id)
+  end
+
+  def correct_user
+    @user = User.find_by_id(params[:user_id])
+    redirect_to(user_path(current_user.id)) unless @user == current_user
   end
 end

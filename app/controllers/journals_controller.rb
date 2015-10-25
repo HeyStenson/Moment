@@ -1,4 +1,7 @@
 class JournalsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :correct_user
+
   def index
     @user = User.find_by_id(params[:user_id])
     @journals = Journal.all
@@ -48,4 +51,10 @@ class JournalsController < ApplicationController
   def journal_params
     params.require(:journal).permit(:title, :description, :user_id)
   end
+
+  def correct_user
+    @user = User.find_by_id(params[:user_id])
+    redirect_to(user_path(current_user.id)) unless @user == current_user
+  end
+
 end
