@@ -8,7 +8,7 @@
 	</div>
 
 	<div><h2>Your Journals:</h2>  
-		<% @user.journals.each do |journal| %>
+		<% @user.journals.reverse_each do |journal| %>
 			<h4><%= link_to journal.title, user_journal_path(@user.id, journal.id) %> - <small><%= journal.description %></small></h4>
 		<% end %>
 

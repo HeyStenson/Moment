@@ -1,8 +1,10 @@
 <div class="container">
-	<h1>Journals#show</h1>
-	<h3><%= @journal.title %></h3>
+	<h1><%= @journal.title %> - <small><%= @journal.description %></small></h1>
 	<small>Created <%= time_ago_in_words(relative_time(@journal)) %> ago</small>
-	<h5><%= @journal.description %></h5>
+	
 	<%= button_to "Edit this journal", edit_user_journal_path, method: :get, class: "btn btn-primary" %>
+	<br>
 	<%= button_to "Delete this journal", user_journal_path, method: :delete, class: "btn btn-danger" %>
+	<div>Placeholder: All This Journal's Moments</div>
+
 </div>
