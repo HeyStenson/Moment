@@ -15,7 +15,7 @@ class MomentsController < ApplicationController
     @moment = Moment.new(moment_params)
     @moment.save
     @user = User.find(params[:user_id])
-    @journal = Journal.find(params[:journal_id])
+    @journal = Journal.friendly.find(params[:journal_id])
     @@photo = @moment.photo
     redirect_to user_journal_path(@user.id, @journal.id)
   end
