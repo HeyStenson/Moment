@@ -1,4 +1,9 @@
 <div class="container">
+	
+	<% if @moment.photo != nil && @moment.photo != "" %>
+		<%= image_tag(@moment.photo, height: '100', width: '100', class: "pull-left") %>
+	<br>
+	<% end %>
 	<h1><%= @moment.title %></h1>
 	<p><%= @moment.description %></p>
 	<br>

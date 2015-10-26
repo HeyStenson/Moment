@@ -16,6 +16,7 @@ class MomentsController < ApplicationController
     @moment.save
     @user = User.find(params[:user_id])
     @journal = Journal.find(params[:journal_id])
+    @@photo = @moment.photo
     redirect_to user_journal_path(@user.id, @journal.id)
   end
 
@@ -31,6 +32,12 @@ class MomentsController < ApplicationController
 
   def update
     @moment = Moment.find_by_id(params[:id])
+    # if @moment.photo.blank?
+    #   @moment.photo = @@photo
+    # end
+    if params[:photo] == ""
+      params[:photo] = @@photo
+    end
     @moment.update(moment_params)
     @user = User.find_by_id(@moment.user_id)
     @journal = Journal.find_by_id(@moment.journal_id)
@@ -48,7 +55,7 @@ class MomentsController < ApplicationController
   private
 
   def moment_params
-    params.require(:moment).permit(:title, :description, :user_id, :journal_id)
+    params.require(:moment).permit(:title, :description, :user_id, :journal_id, :photo)
   end
 
   def correct_user
