@@ -8,5 +8,6 @@
 			<%= f.text_area :description, placeholder: "Description", class: "form-control" %>
 		</div>
 		<%= f.submit "Edit Journal", class: "btn btn-primary" %>
+		<%= button_to "Cancel", user_journal_path, class: "btn btn-primary btn-xs" %>
 	<% end %>
 </div>

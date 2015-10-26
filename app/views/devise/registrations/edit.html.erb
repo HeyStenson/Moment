@@ -16,6 +16,14 @@
       <%= f.email_field :email, placeholder: "Email", autofocus: true, class: "form-control" %>
     </div>
 
+    <div>
+        <input type="hidden" role="uploadcare-uploader" name="user[photo]"
+            data-crop="1:1"
+            data-preview-step="true"
+            data-images-only="true" />
+    </div>
+    <br>
+
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>

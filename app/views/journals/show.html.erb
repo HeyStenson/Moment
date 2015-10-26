@@ -2,19 +2,31 @@
 	<h1><%= @journal.title %> - <small><%= @journal.description %></small></h1>
 	<small>Created <%= time_ago_in_words(relative_time(@journal)) %> ago</small>
 	
-	<%= button_to "Edit this journal", edit_user_journal_path, method: :get, class: "btn btn-primary" %>
-	<br>
-	<%= button_to "Delete this journal", user_journal_path, method: :delete, class: "btn btn-danger" %>
+	<%= link_to "Edit this journal", edit_user_journal_path, method: :get, class: "btn btn-primary btn-xs" %>
+	<%= link_to "Delete this journal", user_journal_path, method: :delete, class: "btn btn-danger btn-xs" %>
 	<div>
 		<%= link_to "Add a New Moment", new_user_journal_moment_path(@user.id, @journal.id), method: :get %>
 	</div>
 	
 	<div>
 		<h2>Your Moments for <%= @journal.title %></h2>
+		<div class="row">
 		<% @journal.moments.reverse_each do |moment| %>
-			<h4><%= link_to moment.title, user_journal_moment_path(@user.id, @journal.id, moment.id) %></h4>
-			<p><%= moment.description %></p>
+
+			
+				<div class="col-sm-6 col-md-4">
+					<div class="thumbnail">	
+						<%= image_tag(moment.photo, height: '100', width: '100') %>
+						<div class="caption">		
+							<h3><%= link_to moment.title, user_journal_moment_path(@user.id, @journal.id, moment.id) %></h3>
+						<p><%= moment.description %></p>
+						</div>
+					</div>
+				</div>
+			
+
 		<% end %>
+		</div>
 	</div>
 	<%= link_to "Back", :back %>
 </div>
