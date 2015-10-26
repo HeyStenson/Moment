@@ -16,7 +16,7 @@ class MomentsController < ApplicationController
     @moment.save
     @user = User.find(params[:user_id])
     @journal = Journal.friendly.find(params[:journal_id])
-    @@photo = @moment.photo
+    # @@photo = @moment.photo
     redirect_to user_journal_path(@user.id, @journal.id)
   end
 
@@ -32,16 +32,13 @@ class MomentsController < ApplicationController
 
   def update
     @moment = Moment.find_by_id(params[:id])
-    # if @moment.photo.blank?
-    #   @moment.photo = @@photo
+    # if params[:photo] == ""
+    #   params[:photo] = @@photo
     # end
-    if params[:photo] == ""
-      params[:photo] = @@photo
-    end
     @moment.update(moment_params)
     @user = User.find_by_id(@moment.user_id)
     @journal = Journal.find_by_id(@moment.journal_id)
-    redirect_to user_journal_moment_path(@user.id, @journal.id, @moment.id)
+    redirect_to user_journal_path(@user.id, @journal.id)
   end
 
   def destroy
