@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .moment-card {
-	height: 455px;
+	height: 480px;
 }
 
 .moment-card img {
@@ -13,10 +13,20 @@
 }
 
 .moment-card h3 {
-	margin-top: -5px;
-	margin-bottom: 3px;
+	margin-top: -3px;
+	margin-bottom: 0;
 }
 
 .moment-text {
-	height: 205px;
+	height: 200px;
+	margin-top: 3px;
+	font-size: 13px;
+}
+
+.moment-title {
+	margin-top: 5px;
+}
+
+.edit-delete {
+	
 }

@@ -14,16 +14,22 @@
 			<% if @moment.photo != nil  && @moment.photo != "" %>
 			  <%= image_tag(@moment.photo, height: '100', width: '100') %><br/>
 			<% end %>
-			<br>
-
+		</div>
+		<div>
 		    <input type="hidden" role="uploadcare-uploader" name="moment[photo]" value="<%= @moment.photo %>"
 		        data-crop="1:1"
 		        data-preview-step="true"
 		        data-images-only="true" />
 		</div>
-		<br>
-		<%= f.submit "Edit Moment", class: "btn btn-primary btn-xs" %>
-		<%= button_to "Cancel", user_journal_moment_path, class: "btn btn-primary btn-xs" %>
+		<div class="checkbox">
+			<label>
+				<%= f.check_box(:public) %>Make this moment sharable? 
+			</label>
+		</div>
+		<div>		
+			<%= f.submit "Edit Moment", class: "btn btn-primary btn-xs" %>
+			<%= button_to "Cancel", user_journal_moment_path, class: "btn btn-primary btn-xs" %>
+		</div>
 	<% end %>
 	
 </div>

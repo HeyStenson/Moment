@@ -17,7 +17,11 @@
 		        data-images-only="true" />
 		</div>
 		<br>
-
+		<div class="checkbox">
+			<label>
+				<%= f.check_box(:public) %>Make this moment sharable? 
+			</label>
+		</div>
 		<%= f.hidden_field :user_id, value: @user.id %>
 		<%= f.hidden_field :journal_id, value: @journal.id %>
 		<div>

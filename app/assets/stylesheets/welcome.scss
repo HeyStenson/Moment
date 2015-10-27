@@ -1,3 +1,34 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	background: none;
+}
+
+.full {
+  background: url(beach.jpeg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.welcome-text {
+	margin-top: 50px;
+	font-size: 200px;
+	font-family: 'Amatic SC', cursive;
+	font-weight: bold;
+}
+
+.welcome-sub {
+	font-weight: bold;
+	margin-top: -12px;
+}
+
+.logo {
+	font-family: 'Amatic SC', cursive;
+	font-size: 30px !important;
+}

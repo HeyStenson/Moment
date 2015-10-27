@@ -1,6 +1,7 @@
 <div class="container">
 	<%= link_to "Back", :back %>
-	<h1><%= @journal.title %> - <small><%= @journal.description %></small></h1>
+	<h1 class="journal-title"><%= @journal.title %></h1>  
+	<h3><%= @journal.description %></h3>
 	<small>Created <%= time_ago_in_words(relative_time(@journal)) %> ago</small>
 	<br>
 	<%= link_to "Edit Journal", edit_user_journal_path, method: :get %> | 
@@ -16,13 +17,21 @@
 			
 				<div class="col-sm-6 col-md-4">
 					<div class="thumbnail moment-card">	
-						<%= image_tag(moment.photo, class: "img-rounded") %>
+						<% if @moment.photo != nil && @moment.photo != "" %>
+							<%= image_tag(moment.photo, class: "img-rounded") %>
+						<% end %>	
 						<div class="caption">		
-							<h3><%= moment.title %></h3>
-							<small>Created <%= time_ago_in_words(relative_time(moment)) %> ago</small>
+							<h3 class="moment-title"><%= moment.title %></h3>
+							<small><em>Created <%= time_ago_in_words(relative_time(moment)) %> ago</em></small>
 						<p class="moment-text"><%= moment.description %></p>
-						<%= link_to "Edit Moment", edit_user_journal_moment_path(@user.id, @journal.id, moment.id), method: :get, class: "small" %> | 
-						<%= link_to "Delete Moment", user_journal_moment_path(@user.id, @journal.id, moment.id), method: :delete, class: "small" %>
+						<div class="edit-delete">						
+							<%= link_to "Edit Moment", edit_user_journal_moment_path(@user.id, @journal.id, moment.id), method: :get, class: "small" %> | 
+							<%= link_to "Delete Moment", user_journal_moment_path(@user.id, @journal.id, moment.id), method: :delete, class: "small" %>
+							<br>
+							<% if moment.public %>
+								You can <%= link_to "share", user_journal_moment_path(@user.id, @journal.id, moment.id) %> this moment! 
+							<% end %>
+						</div>
 						</div>
 					</div>
 				</div>

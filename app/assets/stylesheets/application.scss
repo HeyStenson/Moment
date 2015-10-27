@@ -15,3 +15,12 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+body {
+	font-family: 'Merriweather Sans', sans-serif;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}

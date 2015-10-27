@@ -1,14 +1,20 @@
 <div class="container">
-	
-	<% if @moment.photo != nil && @moment.photo != "" %>
-		<%= image_tag(@moment.photo, height: '100', width: '100', class: "pull-left") %>
-	<br>
+	<% if @moment.public %>
+
+		<% if current_user != @user %>
+			<h1 class="text-center"><%= @user.first_name %> <%= @user.last_name %> has chosen to share this moment with you! Learn more about Moment.</h1>
+		<% else %>
+			<p>Hi, <%= @user.first_name %>! You've chosen to share this moment with others. You can share on Facebook, Twitter, or send this link.</p>	
+		<% end %>
+		<div class="row">		
+			<% if @moment.photo != nil && @moment.photo != "" %>
+				<%= image_tag(@moment.photo, height: '100', width: '100', class: "pull-left") %>
+			<% end %>
+			<h1><%= @moment.title %></h1>
+			<p><%= @moment.description %></p>
+		</div>
+
+	<% else %>
+		<h1 class="text-center">Thank you for your interest in Moment! Learn more about us.</h1>
 	<% end %>
-	<h1><%= @moment.title %></h1>
-	<p><%= @moment.description %></p>
-	<br>
-	<%= button_to "Edit Moment", edit_user_journal_moment_path, method: :get, class: "btn btn-xs btn-primary" %>
-	<br>
-	<%= button_to "Delete Moment", user_journal_moment_path, method: :delete, class: "btn btn-xs btn-danger" %>
-	
 </div>
