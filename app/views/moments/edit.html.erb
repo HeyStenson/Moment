@@ -7,7 +7,7 @@
 		</div>
 
 		<div class="form-group">
-			<%= f.text_area :description, class: "form-control", required: true, maxlength: 500 %>
+			<%= f.text_area :description, class: "form-control", rows: 4, required: true, maxlength: 500 %>
 		</div>
 
 		<div>
@@ -31,5 +31,4 @@
 			<%= button_to "Cancel", user_journal_moment_path, class: "btn btn-primary btn-xs" %>
 		</div>
 	<% end %>
-	
 </div>

@@ -4,14 +4,22 @@
 		<% if current_user != @user %>
 			<h1 class="text-center"><%= @user.first_name %> <%= @user.last_name %> has chosen to share this moment with you! Learn more about Moment.</h1>
 		<% else %>
-			<p>Hi, <%= @user.first_name %>! You've chosen to share this moment with others. You can share on Facebook, Twitter, or send this link.</p>	
+			<h2 class="text-center">Hi, <%= @user.first_name %>! You've chosen to share this moment with others. <br> You can share on Facebook, Twitter, or send this link.</h2>	
 		<% end %>
-		<div class="row">		
-			<% if @moment.photo != nil && @moment.photo != "" %>
-				<%= image_tag(@moment.photo, height: '100', width: '100', class: "pull-left") %>
-			<% end %>
-			<h1><%= @moment.title %></h1>
-			<p><%= @moment.description %></p>
+		<div class="row">	
+			<div class="col-sm-6 col-md-4"></div>
+			<div class="col-sm-6 col-md-4">		
+				<div class="thumbnail moment-card">				
+					<% if @moment.photo != nil && @moment.photo != "" %>
+						<%= image_tag(@moment.photo, class: "img-rounded") %>
+					<% end %>
+					<div class="caption">
+						<h3 class="moment-title"><%= @moment.title %></h3>
+						<small><em>Created <%= time_ago_in_words(relative_time(@moment)) %> ago</em></small>
+						<p class="moment-text"><%= @moment.description %></p>
+				</div>		
+				</div>
+			</div>	
 		</div>
 
 	<% else %>
