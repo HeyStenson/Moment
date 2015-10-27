@@ -1,3 +1,32 @@
 // Place all the styles related to the moments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.moment-card {
+	height: 480px;
+}
+
+.moment-card img {
+	height: 140px;
+	width: 140px;
+	margin-top: 7px;
+}
+
+.moment-card h3 {
+	margin-top: -3px;
+	margin-bottom: 0;
+}
+
+.moment-text {
+	height: 200px;
+	margin-top: 3px;
+	font-size: 13px;
+}
+
+.moment-title {
+	margin-top: 5px;
+}
+
+.edit-delete {
+	
+}

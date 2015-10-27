@@ -1,6 +1,6 @@
 class MomentsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :correct_user
+  before_action :authenticate_user!, except: :show
+  before_action :correct_user, except: :show
 
   def index
   end
@@ -15,8 +15,7 @@ class MomentsController < ApplicationController
     @moment = Moment.new(moment_params)
     @moment.save
     @user = User.find(params[:user_id])
-    @journal = Journal.find(params[:journal_id])
-    @@photo = @moment.photo
+    @journal = Journal.friendly.find(params[:journal_id])
     redirect_to user_journal_path(@user.id, @journal.id)
   end
 
@@ -32,16 +31,10 @@ class MomentsController < ApplicationController
 
   def update
     @moment = Moment.find_by_id(params[:id])
-    # if @moment.photo.blank?
-    #   @moment.photo = @@photo
-    # end
-    if params[:photo] == ""
-      params[:photo] = @@photo
-    end
     @moment.update(moment_params)
     @user = User.find_by_id(@moment.user_id)
     @journal = Journal.find_by_id(@moment.journal_id)
-    redirect_to user_journal_moment_path(@user.id, @journal.id, @moment.id)
+    redirect_to user_journal_path(@user.id, @journal.id)
   end
 
   def destroy
@@ -55,7 +48,7 @@ class MomentsController < ApplicationController
   private
 
   def moment_params
-    params.require(:moment).permit(:title, :description, :user_id, :journal_id, :photo)
+    params.require(:moment).permit(:title, :description, :user_id, :journal_id, :photo, :public)
   end
 
   def correct_user

@@ -21,7 +21,7 @@ class JournalsController < ApplicationController
 
   def show
     # this journal
-    @journal = Journal.find_by_id(params[:id])
+    @journal = Journal.friendly.find_by_id(params[:id])
     # user for the journal
     @user = User.find_by_id(@journal.user_id)
     # moments for this journal
