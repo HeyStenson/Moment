@@ -4,12 +4,14 @@
 
 .moment-card {
 	height: 480px;
+	position: relative;	
+	margin-top: 10px;
+	margin-bottom: -15px;
 }
 
 .moment-card img {
 	height: 140px;
 	width: 140px;
-	margin-top: 7px;
 }
 
 .moment-card h3 {
@@ -19,7 +21,7 @@
 
 .moment-text {
 	height: 200px;
-	margin-top: 3px;
+	margin-top: 10px;
 	font-size: 13px;
 }
 
@@ -28,7 +30,13 @@
 }
 
 .edit-delete {
-	
+	position: absolute;
+	top: 430px;
+}
+
+.share-link {
+	position: absolute;
+	top: 450px;
 }
 
 .moment-edit-input {
