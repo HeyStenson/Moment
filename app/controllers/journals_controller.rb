@@ -25,7 +25,7 @@ class JournalsController < ApplicationController
     # user for the journal
     @user = User.find_by_id(@journal.user_id)
     # moments for this journal
-    @moments = @journal.moments.first
+    @moments = @journal.moments.order(created_at: :desc).page(params[:page]).per(3)
   end
 
   def edit
