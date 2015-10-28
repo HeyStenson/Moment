@@ -2,3 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.hello-user {
+	font-family: 'Amatic SC', cursive;
+	font-size: 70px;
+	font-weight: bold;
+	margin: 13px 0 2px 0;
+}
+
+.user-pic {
+	height: 140px;
+	width: 140px;
+	margin-right: 20px;
+}

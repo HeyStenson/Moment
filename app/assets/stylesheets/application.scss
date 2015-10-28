@@ -25,3 +25,20 @@ body {
     float: none;
     margin: 0 auto;
 }
+
+.nav-username {
+	color: #777;
+	padding: 15px;
+}
+
+#about-content {
+	display: none;
+}
+
+.welcome-container {
+	position: relative;
+}
+
+.welcome-container div {
+	position: absolute;
+}

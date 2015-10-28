@@ -1,16 +1,25 @@
 <div class="container">
-	<h1>Hello, <%= @user.first_name %>!</h1>
-	<%= image_tag(@user.photo, height: '100', width: '100') %>
-	<br>
-	<%= link_to("Update Your Profile", edit_user_registration_path) %>
-
-	<div>
-		<%= link_to("Add a new journal", new_user_journal_path(@user.id), method: :get) %>
+	<div class="pull-left">	
+		<%= image_tag(@user.photo, class: "user-pic img-rounded") %>
 	</div>
-
-	<div><h2>Your Journals:</h2>  
+	<div class="pull-left">	
+		<h1 class="hello-user">Hello, <%= @user.first_name %>!</h1>
+		<div class="clearfix">
+			<%= link_to("Update your profile?", edit_user_registration_path) %>
+			<br>
+			<%= link_to("Add a new journal", new_user_journal_path(@user.id), method: :get) %>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	<div class="clearfix">
+		<h2>Your Journals:</h2>  
 		<% @user.journals.reverse_each do |journal| %>
-			<h4><%= link_to journal.title, user_journal_path(@user.id, journal.id) %> - <small><%= journal.description %></small></h4>
+			<div class="col-sm-6 col-md-4">			
+				<h4><%= link_to journal.title, user_journal_path(@user.id, journal.id) %> (<%= journal.moments.count%> posts) </h4> 
+				<small><em>Created <%= time_ago_in_words(relative_time(journal)) %> ago</em></small>
+				<p><%= journal.description %></p>
+				<hr>
+			</div>
 		<% end %>
 
 	</div>

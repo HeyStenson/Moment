@@ -2,13 +2,25 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-3"></div>
-			<div class="col-md-6 col-sm-12">
-				<h1 class="welcome-text text-center">MOMENT</h1>
-				<h3 class="welcome-sub text-center">The days are long, but the years are short.</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur congue, libero quis consequat imperdiet, lacus quam elementum nunc, quis viverra nisi massa non urna. Nulla facilisi. Etiam vulputate commodo dui vel sollicitudin. Vivamus nulla enim, pretium non orci a, ullamcorper tincidunt lectus.</p>
+			<div class="col-md-6 col-sm-12 welcome-container">
+					<h1 class="welcome-text text-center">MOMENT</h1>
+					<h3 class="welcome-sub text-center">The days are long, but the years are short.</h3>
+				<div id="default-content">	
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur congue, libero quis consequat imperdiet, lacus quam elementum nunc, quis viverra nisi massa non urna. Nulla facilisi. Etiam vulputate commodo dui vel sollicitudin. Vivamus nulla enim, pretium non orci a, ullamcorper tincidunt lectus.</p>
+				</div>
+				<div id="about-content">
+					Hi, my name is Heather Stenson. I'm a full-stack developer seeking employment opportunities in the San Francisco Bay Area. I built this Rails app to help people keep track of the fleeting days. Front-end? I did that. Back-end? That was me too! Interested in what I can help you do? <a href="https://www.linkedin.com/in/heatherstenson" target="blank">Get in touch! </a>
+				</div>
 			</div>	
 			<div class="col-md-3"></div>
 		</div>
 	</div>
+	<script>
+		$("#learn-more").click(function(){
+			$("#default-content").fadeOut("slow", function(){
+				$("#about-content").fadeIn("slow");
+			});
+		});
+	</script>
 </body>
 
