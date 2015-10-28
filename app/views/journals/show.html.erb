@@ -7,7 +7,7 @@
 	<%= link_to "Delete Journal", user_journal_path, data: { confirm: "Are you sure?" }, method: :delete %>
 	<div>
 		<div>
-			<%= link_to "Add a New Moment", new_user_journal_moment_path(@user.id, @journal.id), method: :get %>
+			<%= link_to "Add a New Moment", new_user_journal_moment_path(@user.id, @journal.slug), method: :get %>
 		</div>
 
 		<div class="row">
@@ -24,8 +24,8 @@
 							<small><em>Created <%= time_ago_in_words(relative_time(moment)) %> ago</em></small>
 							<p class="moment-text"><%= moment.description %></p>
 							<div class="edit-delete">						
-								<%= link_to "Edit Moment", edit_user_journal_moment_path(@user.id, @journal.id, moment.id), method: :get, class: "small" %> | 
-								<%= link_to "Delete Moment", user_journal_moment_path(@user.id, @journal.id, moment.id), data: { confirm: "Are you sure?" }, method: :delete, class: "small" %>
+								<%= link_to "Edit Moment", edit_user_journal_moment_path(@user.id, @journal.slug, moment.id), method: :get, class: "small" %> | 
+								<%= link_to "Delete Moment", user_journal_moment_path(@user.id, @journal.slug, moment.id), data: { confirm: "Are you sure?" }, method: :delete, class: "small" %>
 							</div>
 							<div class="share-link">							
 								<% if moment.public %>

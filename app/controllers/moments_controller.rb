@@ -8,7 +8,7 @@ class MomentsController < ApplicationController
   def new
     @moment = Moment.new
     @user = User.find_by_id(params[:user_id])
-    @journal = Journal.find_by_id(params[:journal_id])
+    @journal = Journal.friendly.find(params[:journal_id])
   end
 
   def create
@@ -16,12 +16,12 @@ class MomentsController < ApplicationController
     @moment.save
     @user = User.find(params[:user_id])
     @journal = Journal.friendly.find(params[:journal_id])
-    redirect_to user_journal_path(@user.id, @journal.id)
+    redirect_to user_journal_path(@user.id, @journal.slug)
   end
 
   def show
     @moment = Moment.find_by_id(params[:id])
-    @journal = Journal.find_by_id(@moment.journal_id)
+    @journal = Journal.friendly.find(@moment.journal_id)
     @user = User.find_by_id(@moment.user_id)
   end
 
@@ -33,16 +33,16 @@ class MomentsController < ApplicationController
     @moment = Moment.find_by_id(params[:id])
     @moment.update(moment_params)
     @user = User.find_by_id(@moment.user_id)
-    @journal = Journal.find_by_id(@moment.journal_id)
-    redirect_to user_journal_path(@user.id, @journal.id)
+    @journal = Journal.friendly.find(@moment.journal_id)
+    redirect_to user_journal_path(@user.id, @journal.slug)
   end
 
   def destroy
     moment = Moment.find_by_id(params[:id])
     @user = User.find_by_id(moment.user_id)
-    @journal = Journal.find_by_id(moment.journal_id)
+    @journal = Journal.friendly.find(moment.journal_id)
     moment.destroy
-    redirect_to user_journal_path(@user.id, @journal.id)
+    redirect_to user_journal_path(@user.id, @journal.slug)
   end
 
   private
