@@ -1,34 +1,37 @@
 <div class="container">
-	<h1>Edit This Moment</h1>
-	
-	<%= form_for @moment, url: user_journal_moment_path, method: :put do |f| %>
-		<div class="form-group">
-			<%= f.text_field :title, class: "form-control", required: true %>
-		</div>
+	<%= link_to "Back", :back %>
+	<div class="form-container">	
+		<h1>Edit This Moment</h1>
+		
+		<%= form_for @moment, url: user_journal_moment_path, method: :put do |f| %>
+			<div class="form-group">
+				<%= f.text_field :title, class: "form-control", required: true %>
+			</div>
 
-		<div class="form-group">
-			<%= f.text_area :description, class: "form-control", rows: 4, required: true, maxlength: 500 %>
-		</div>
+			<div class="form-group">
+				<%= f.text_area :description, class: "form-control", rows: 4, required: true, maxlength: 500 %>
+			</div>
 
-		<div>
-			<% if @moment.photo != nil  && @moment.photo != "" %>
-			  <%= image_tag(@moment.photo, height: '100', width: '100') %><br/>
-			<% end %>
-		</div>
-		<div>
-		    <input type="hidden" role="uploadcare-uploader" name="moment[photo]" value="<%= @moment.photo %>"
-		        data-crop="1:1"
-		        data-preview-step="true"
-		        data-images-only="true" />
-		</div>
-		<div class="checkbox">
-			<label>
-				<%= f.check_box(:public) %>Make this moment sharable? 
-			</label>
-		</div>
-		<div>		
-			<%= f.submit "Edit Moment", class: "btn btn-primary btn-xs" %>
-			<%= button_to "Cancel", user_journal_moment_path, class: "btn btn-primary btn-xs" %>
-		</div>
-	<% end %>
+			<div>
+				<% if @moment.photo != nil  && @moment.photo != "" %>
+				  <%= image_tag(@moment.photo, height: '100', width: '100') %><br/>
+				<% end %>
+			</div>
+			<div>
+			    <input type="hidden" role="uploadcare-uploader" name="moment[photo]" value="<%= @moment.photo %>"
+			        data-crop="1:1"
+			        data-preview-step="true"
+			        data-images-only="true" />
+			</div>
+			<div class="checkbox">
+				<label>
+					<%= f.check_box(:public) %>Make this moment sharable? 
+				</label>
+			</div>
+			<div>		
+				<%= f.submit "Edit Moment", class: "btn btn-primary btn-xs" %>
+				<%= button_to "Cancel", user_journal_moment_path, class: "btn btn-primary btn-xs" %>
+			</div>
+		<% end %>
+	</div>
 </div>

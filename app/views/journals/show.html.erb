@@ -4,7 +4,7 @@
 	<small><em>Created <%= time_ago_in_words(relative_time(@journal)) %> ago</em></small>
 	<h3 class="journal-description"><%= @journal.description %></h3>
 	<%= link_to "Edit Journal", edit_user_journal_path, method: :get %> | 
-	<%= link_to "Delete Journal", user_journal_path, method: :delete %>
+	<%= link_to "Delete Journal", user_journal_path, data: { confirm: "Are you sure?" }, method: :delete %>
 	<div>
 		<div>
 			<%= link_to "Add a New Moment", new_user_journal_moment_path(@user.id, @journal.id), method: :get %>
@@ -25,7 +25,7 @@
 							<p class="moment-text"><%= moment.description %></p>
 							<div class="edit-delete">						
 								<%= link_to "Edit Moment", edit_user_journal_moment_path(@user.id, @journal.id, moment.id), method: :get, class: "small" %> | 
-								<%= link_to "Delete Moment", user_journal_moment_path(@user.id, @journal.id, moment.id), method: :delete, class: "small" %>
+								<%= link_to "Delete Moment", user_journal_moment_path(@user.id, @journal.id, moment.id), data: { confirm: "Are you sure?" }, method: :delete, class: "small" %>
 							</div>
 							<div class="share-link">							
 								<% if moment.public %>
@@ -37,7 +37,7 @@
 				</div>
 		<% end %>
 		</div>
-		<div class="paginate">
+		<div>
 			<%= paginate(@moments) %>	
 		</div>
 	</div>
