@@ -1,32 +1,35 @@
 <div class="container">
-	<h1>Add a New Moment</h1>
-	
-	<%= form_for [@user, @journal, @moment] do |f| %>
-		<div class="form-group">
-			<%= f.text_field :title, placeholder: "Moment title", class: "form-control", required: true %>
-		</div>
+	<%= link_to "Back", :back %>
+	<div class="form-container">	
+		<h1>Add a New Moment</h1>
+		
+		<%= form_for [@user, @journal, @moment] do |f| %>
+			<div class="form-group">
+				<%= f.text_field :title, placeholder: "Moment title", class: "form-control", required: true %>
+			</div>
 
-		<div class="form-group">
-			<%= f.text_area :description, placeholder: "Start a memory", class: "form-control", id: "new-memory-text", rows: 4, required: true, maxlength: 500 %>
-		</div>
+			<div class="form-group">
+				<%= f.text_area :description, placeholder: "Start a memory", class: "form-control", id: "new-memory-text", rows: 4, required: true, maxlength: 500 %>
+			</div>
 
-		<div>
-		    <input type="hidden" role="uploadcare-uploader" name="moment[photo]"
-		        data-crop="1:1"
-		        data-preview-step="true"
-		        data-images-only="true" />
-		</div>
-		<br>
-		<div class="checkbox">
-			<label>
-				<%= f.check_box(:public) %>Make this moment sharable? 
-			</label>
-		</div>
-		<%= f.hidden_field :user_id, value: @user.id %>
-		<%= f.hidden_field :journal_id, value: @journal.id %>
-		<div>
-			<%= f.submit "Create New Moment", class: "btn btn-xs btn-primary" %>
-		</div>
-	<% end %>
-
+			<div>
+			    <input type="hidden" role="uploadcare-uploader" name="moment[photo]"
+			        data-crop="1:1"
+			        data-preview-step="true"
+			        data-images-only="true" />
+			</div>
+			<br>
+			<div class="checkbox">
+				<label>
+					<%= f.check_box(:public) %>Make this moment sharable? 
+				</label>
+			</div>
+			<%= f.hidden_field :user_id, value: @user.id %>
+			<%= f.hidden_field :journal_id, value: @journal.id %>
+			<div>
+				<%= f.submit "Create New Moment", class: "btn btn-xs btn-primary" %>
+				<%= link_to "Cancel", user_journal_path(@user.id, @journal.id), class: "btn btn-primary btn-xs" %>
+			</div>
+		<% end %>
+	</div>
 </div>
