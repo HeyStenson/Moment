@@ -28,7 +28,7 @@
 			<%= f.hidden_field :journal_id, value: @journal.id %>
 			<div>
 				<%= f.submit "Create New Moment", class: "btn btn-xs btn-primary" %>
-				<%= link_to "Cancel", user_journal_path(@user.id, @journal.id), class: "btn btn-primary btn-xs" %>
+				<%= link_to "Cancel", user_journal_path(@user.id, @journal.slug), class: "btn btn-primary btn-xs" %>
 			</div>
 		<% end %>
 	</div>

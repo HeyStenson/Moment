@@ -21,7 +21,7 @@ class JournalsController < ApplicationController
 
   def show
     # this journal
-    @journal = Journal.friendly.find_by_id(params[:id])
+    @journal = Journal.friendly.find(params[:id])
     # user for the journal
     @user = User.find_by_id(@journal.user_id)
     # moments for this journal
@@ -29,18 +29,18 @@ class JournalsController < ApplicationController
   end
 
   def edit
-    @journal = Journal.find_by_id(params[:id])
+    @journal = Journal.friendly.find(params[:id])
   end
 
   def update
-    @journal = Journal.find_by_id(params[:id])
+    @journal = Journal.friendly.find(params[:id])
     @journal.update(journal_params)
     @user = current_user
-    redirect_to user_journal_path(@user.id, @journal.id)
+    redirect_to user_journal_path(@user.id, @journal.slug)
   end 
 
   def destroy
-    journal = Journal.find_by_id(params[:id])
+    journal = Journal.friendly.find(params[:id])
     @user = current_user
     journal.destroy
     redirect_to user_path(@user.id)

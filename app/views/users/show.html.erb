@@ -15,7 +15,7 @@
 		<h2>Your Journals:</h2>  
 		<% @user.journals.reverse_each do |journal| %>
 			<div class="col-sm-6 col-md-4 journal-show">			
-				<h4><%= link_to journal.title, user_journal_path(@user.id, journal.id) %> (<%= journal.moments.count%> posts) </h4> 
+				<h4><%= link_to journal.title, user_journal_path(@user.id, journal.slug) %> (<%= journal.moments.count%> posts) </h4> 
 				<small><em>Created <%= time_ago_in_words(relative_time(journal)) %> ago</em></small>
 				<p><%= journal.description %></p>
 				<hr>
