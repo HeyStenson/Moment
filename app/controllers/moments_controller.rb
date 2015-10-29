@@ -16,7 +16,7 @@ class MomentsController < ApplicationController
     @moment.save
     @user = User.find(params[:user_id])
     @journal = Journal.friendly.find(params[:journal_id])
-    redirect_to user_journal_path(@user.id, @journal.slug)
+    redirect_to user_journal_path(@user.id, @journal.id)
   end
 
   def show
