@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151028230518) do
+ActiveRecord::Schema.define(version: 20151029000006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,9 +51,11 @@ ActiveRecord::Schema.define(version: 20151028230518) do
     t.integer  "journal_id"
     t.string   "photo"
     t.string   "recipient"
+    t.string   "slug"
   end
 
   add_index "moments", ["journal_id"], name: "index_moments_on_journal_id", using: :btree
+  add_index "moments", ["slug"], name: "index_moments_on_slug", unique: true, using: :btree
   add_index "moments", ["user_id"], name: "index_moments_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|

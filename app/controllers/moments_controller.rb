@@ -20,17 +20,17 @@ class MomentsController < ApplicationController
   end
 
   def show
-    @moment = Moment.find_by_id(params[:id])
+    @moment = Moment.friendly.find(params[:id])
     @journal = Journal.friendly.find(@moment.journal_id)
     @user = User.find_by_id(@moment.user_id)
   end
 
   def edit
-    @moment = Moment.find_by_id(params[:id])
+    @moment = Moment.friendly.find(params[:id])
   end
 
   def update
-    @moment = Moment.find_by_id(params[:id])
+    @moment = Moment.friendly.find(params[:id])
     @moment.update(moment_params)
     @user = User.find_by_id(@moment.user_id)
     @journal = Journal.friendly.find(@moment.journal_id)
@@ -38,7 +38,7 @@ class MomentsController < ApplicationController
   end
 
   def destroy
-    moment = Moment.find_by_id(params[:id])
+    moment = Moment.friendly.find(params[:id])
     @user = User.find_by_id(moment.user_id)
     @journal = Journal.friendly.find(moment.journal_id)
     moment.destroy
