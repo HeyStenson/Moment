@@ -5,6 +5,8 @@
 			<h4 class="text-center"><%= link_to "Learn more about Moment.", root_path %></h4>
 		<% else %>
 			<h2 class="text-center">Hi, <%= @user.first_name %>! You've chosen to share this moment with others.</h2>
+			<p class="text-center">Send them this link: <br>
+			<em>http://years-are-short.herokuapp.com/users/<%= @user.id %>/journals/<%= @journal.slug %>/moments/<%= @moment.slug %></em></p>
 		<% end %>
 		<div class="row">	
 			<div class="col-sm-6 col-md-4"></div>
